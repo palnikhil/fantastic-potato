@@ -1,18 +1,30 @@
-import React, { Component } from 'react';
+import React, { useState } from 'react';
+import { Provider } from 'react-redux';
+import store from './redux/store';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 import Container from 'react-bootstrap/Container';
 import InvoiceForm from './components/InvoiceForm';
+import InvoiceList from './components/InvoiceList/InvoiceList';
 
-class App extends Component {
-  render() {
+function App(){
+  // const [showCreateForm, setShowCreateForm] = useState(false);
+
+  // const handleShowCreateForm = () => {
+  //   setShowCreateForm(true);
+  // };
+
   return (
-    <div className="App d-flex flex-column align-items-center justify-content-center w-100">
-      <Container>
-        <InvoiceForm/>
-      </Container>
-    </div>
+    <Provider store={store}>
+      <div className="App d-flex flex-column align-items-center justify-content-center w-100">
+        <Container>
+          <h1>Invoice Management</h1>
+          <InvoiceList />
+          <InvoiceForm />
+        </Container>
+      </div>
+    </Provider>
   );
-}}
+}
 
 export default App;
